@@ -1,4 +1,5 @@
 from scapy.all import *
+from scapy.layers.l2 import ARP, Ether
 import time
 
 def get_mac(ip):
