@@ -15,5 +15,6 @@ After enough packets are recieved we can crack the encryption key using:
 After cracking the password we can stop the wlan0mon interface using:
 
 `airmon-ng stop wlan0mon`
+
 `systemctl start NetworkManager.service`
 
