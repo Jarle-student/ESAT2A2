@@ -1,24 +1,25 @@
-*{ /* voor alle elementen */
+*{ /* for everything */
     padding:0;
     margin:0; /* zo neemt de afbeelding alle beschikbare plaats op de scherm*/
     box-sizing: border-box;
 }
-img{ /* voor alle afbeeldingen */
+img{ /* for all images */
     max-width: 100%;
 }
-body{
+body{ /* for the body */
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    background-color: #000; /* kleur van de background */
-    color:#fff; /* kleur van de tekst */
+    background-color: #000;
+    color:#fff;
 }
-header{
+header{ /* for the header */
     display: grid;
     grid-template-columns: max-content 1fr;
     padding: 26px 20px;
     position:absolute;
     width: 100%;
-    z-index: 5; /* z-index => voor de positie van layers op het scherm */
+    z-index: 5;
 }
+/* for mobile devices */
 @media screen and (min-width:550px) {
     header{
         padding: 26px 56px;
@@ -49,6 +50,9 @@ header a.button{
     padding: 7px 17px;
     border-radius: 3px;
 }
+
+
+/* code for the select toolbox */
 header select{
     background: transparent;
     color:#fff;
@@ -61,7 +65,7 @@ header div.select{
 
 }
 
-header select option { /* wat gebeurt als gebruiker klikt op select en wenst de opties te zien */
+header select option {
     background-color: #fff;
     color: #000;
 }
@@ -72,6 +76,8 @@ header select option { /* wat gebeurt als gebruiker klikt op select en wenst de 
         margin-right: 30px;
     }
 }
+
+/* code for the small image next to the language toolbox */
 header div.select svg{
     height:20px;
     fill: #fff;
@@ -80,6 +86,8 @@ header div.select svg{
     margin-left: 4px;
 }
 
+
+/* code for the background image */
 div.splash{
     position:relative;
 }
@@ -98,6 +106,8 @@ div.splash div.background img{
     opacity: 0.6;
     object-fit: cover;
 }
+
+/* code for the email bar styling with the Get Started button */
 div.splash div.content{
     padding: 95px 20px;
     max-width: 655px;
@@ -108,17 +118,24 @@ div.splash div.content{
     position:relative;
     z-index:3;
 }
+
+
+
+
+
 @media screen and (min-width:550px) {
     div.splash div.content{
         padding-top: 235px;
         padding-bottom: 185px;
     }
 }
+
+/* code for the text content */
 div.splash h1, div.splash h2, div.splash h3{
     font-weight: normal;
 }
 div.splash h1{
-    font-size: 1.75rem; /* tekst in h1 is 1.75 groter dan de norm */
+    font-size: 1.75rem;
     font-weight: normal;
 }
 div.splash h2{
@@ -144,6 +161,7 @@ div.splash h3{
     }
 }
 
+/* code for the email bar */
 div.cta form{
     position:relative;
     display:grid;
@@ -162,20 +180,20 @@ div.cta input{
     font-size:1.2rem;
     width:100%;
 }
-div.cta input ~ span{ /* we refereren aan de element van de screen met een span ernaast */
+div.cta input ~ span{
     position:absolute;
     left: 12px;
     top:19px;
     z-index: 3;
     color:#aaa;
-    transition: all 0.15s ease; /* snelheid van de animatie van de "e-mail" */
-    pointer-events: none; /* zo kan de gebruiker de "e-mail" tekst niet selecteren */
+    transition: all 0.15s ease;
+    pointer-events: none;
 }
 div.cta input:focus{
     padding-top: 19px;
     padding-bottom: 11px;
 }
-div.cta input:focus ~ span{ /* om te zorgen dat als je op e-mail klikt, wordt de "e-mail" kleiner en schuift die 4px naar boven */
+div.cta input:focus ~ span{
     top: 4px;
     font-size:.8rem;
 }
@@ -198,6 +216,7 @@ div.cta a{
     }
 }
 
+/* code for the section underneath the main image */
 section{
     display:grid;
     grid-template-columns: 1fr;
