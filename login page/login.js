@@ -1,3 +1,7 @@
+// This document was partially created with the assistance of AI tools,
+// including code generation from ChatGPT.
+
+
 document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent form submission
 
