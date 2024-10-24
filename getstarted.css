@@ -1,0 +1,263 @@
+*{ /* voor alle elementen */
+    padding:0;
+    margin:0; /* zo neemt de afbeelding alle beschikbare plaats op de scherm*/
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    background-color: #000; /* kleur van de background */
+}
+img{ /* voor alle afbeeldingen */
+    max-width: 100%;
+}
+@media screen and (min-width:550px) {
+    header .logo svg{
+        height: 37px;
+    }
+
+@media screen and (min-width:550px) {
+    header div.select{
+        margin-right: 30px;
+    }
+}
+header{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    padding: 26px 20px;
+    position:absolute;
+    width: 100%;
+    z-index: 5; /* z-index => voor de positie van layers op het scherm */
+}
+a.logo{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    padding: 1px 20px;
+    position:relative;
+    width: 100%;
+    z-index: 5; /* z-index => voor de positie van layers op het scherm */
+}
+body .logo svg{
+    fill: #e50914;
+    height: 27px;
+}
+@media screen and (min-width:550px) {
+    body .logo svg{
+        height: 37px;
+    }
+
+.container {
+    position: relative; /* Gebruik relative of remove completely */
+    max-width: 700px;
+    width: 100%;
+    height: 500px;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    margin: 0 auto; /* Centreert de container horizontaal */
+    top: 100px; /* Dit kan je aanpassen of verwijderen */
+}
+
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.container .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #E50914, #221F20);
+}
+.content form .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+.user-details .input-box input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+
+
+
+.user-details .input-box input {
+    outline: 0; /* Remove the default outline */
+    border: 2px solid #ccc; /* Default border color */
+    padding: 10px; /* Optional padding for better input appearance */
+    border-radius: 4px; /* Optional border radius for rounded corners */
+    width: 100%; /* Make inputs full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+.input-box.success input {
+    border-color: #09c372; /* Success border color */
+}
+
+.input-box.error input {
+    border-color: #ff3860; /* Error border color */
+}
+
+.input-box.error .error {
+    color: #ff3860; /* Error message color */
+    font-size: 11px; /* Error message font size */
+    height: 13px; /* Error message height */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+form .gender-details .gender-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+form .category {
+  display: flex;
+  width: 80%;
+  margin: 14px 0;
+  justify-content: space-between;
+}
+form .category label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+form .category label .dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two,
+#dot-3:checked~.category label .three {
+  background: linear-gradient(90deg, #E50914, #221F20); /* Verander naar zwart */
+  border-color: #d9d9d9; /* Of een andere kleur als je dat wilt */
+}
+form input[type="radio"] {
+  display: none;
+}
+body a.button{
+    display: inline-block;
+    background-color: #e50914;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 130px;
+    border-radius: 3px;
+}
+body a.button {
+    width: 100%;
+    padding: 13px 295px;
+    font-size: 1rem;
+    background: #e50914;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    margin: 25px 0 10px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+/* Responsive media query code for mobile devices */
+@media(max-width: 584px) {
+  .container {
+    max-width: 100%;
+  }
+  form .user-details .input-box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category {
+    width: 100%;
+  }
+  .content form .user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+/* Responsive media query code for mobile devices */
+@media(max-width: 459px) {
+  .container .content .category {
+    flex-direction: column;
+  }
+}
+
+.button {
+    background: linear-gradient(90deg, #E50914, #221F20); /* Button background color */
+    padding: 10px 20px;        /* Padding around the text */
+    font-size: 16px;           /* Adjust font size */
+    display: flex;
+    cursor: pointer;           /* Pointer cursor on hover */
+
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    width: 650px;
+
+    position: absolute;
+    top: 425px;
+    left: 26px;
+    z-index: 15;
+
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; /* Change font family */
+    color: white; /* Change text color */
+    font-size: 1.5rem; /* Change font size */
+    font-weight: bold;
+}
+div.splash{
+    position:relative;
+    z-index: -1;
+}
+div.splash div.gradient{
+    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+    position:absolute;
+    inset:0;
+}
+div.splash div.background{
+    position:absolute;
+    z-index:1;
+    inset right:0;
+}
+div.splash div.background img{
+    height:100%;
+    opacity: 0.6;
+    object-fit: cover;
+}
