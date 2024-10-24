@@ -1,15 +1,17 @@
-*{ /* voor alle elementen */
+*{ /* for everything */
     padding:0;
-    margin:0; /* zo neemt de afbeelding alle beschikbare plaats op de scherm*/
+    margin:0;
     box-sizing: border-box;
 }
-body{
+body{ /* for the body */
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    background-color: #000; /* kleur van de background */
+    background-color: #000;
 }
-img{ /* voor alle afbeeldingen */
+img{ /* for all images */
     max-width: 100%;
 }
+
+/* changes of sizes when the screen size changes */
 @media screen and (min-width:550px) {
     header .logo svg{
         height: 37px;
@@ -20,21 +22,25 @@ img{ /* voor alle afbeeldingen */
         margin-right: 30px;
     }
 }
+
+/* code for everything inside the header section in the HTML file*/
 header{
     display: grid;
     grid-template-columns: max-content 1fr;
     padding: 26px 20px;
     position:absolute;
     width: 100%;
-    z-index: 5; /* z-index => voor de positie van layers op het scherm */
+    z-index: 5;
 }
+
+/* code for the Netflix logo*/
 a.logo{
     display: grid;
     grid-template-columns: max-content 1fr;
     padding: 1px 20px;
     position:relative;
     width: 100%;
-    z-index: 5; /* z-index => voor de positie van layers op het scherm */
+    z-index: 5;
 }
 body .logo svg{
     fill: #e50914;
@@ -45,8 +51,11 @@ body .logo svg{
         height: 37px;
     }
 
+
+
+/* code for the white box for the regitration*/
 .container {
-    position: relative; /* Gebruik relative of remove completely */
+    position: relative;
     max-width: 700px;
     width: 100%;
     height: 500px;
@@ -54,16 +63,18 @@ body .logo svg{
     padding: 25px 30px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    margin: 0 auto; /* Centreert de container horizontaal */
-    top: 100px; /* Dit kan je aanpassen of verwijderen */
+    margin: 0 auto;
+    top: 100px;
 }
 
+/* code for the title of the registration form*/
 .container .title {
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
 
+/* code for the small horizontal bar under the title of the registration form*/
 .container .title::before {
   content: "";
   position: absolute;
@@ -74,6 +85,11 @@ body .logo svg{
   border-radius: 5px;
   background: linear-gradient(90deg, #E50914, #221F20);
 }
+
+
+
+
+
 .content form .user-details {
   display: flex;
   flex-wrap: wrap;
@@ -99,53 +115,52 @@ form .user-details .input-box {
 
 
 
-
+/* code for user input boxes */
 .user-details .input-box input {
-    outline: 0; /* Remove the default outline */
-    border: 2px solid #ccc; /* Default border color */
-    padding: 10px; /* Optional padding for better input appearance */
-    border-radius: 4px; /* Optional border radius for rounded corners */
-    width: 100%; /* Make inputs full width */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
+    outline: 0;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* code for success color */
 .input-box.success input {
-    border-color: #09c372; /* Success border color */
+    border-color: #09c372;
 }
 
+/* code for error color */
 .input-box.error input {
-    border-color: #ff3860; /* Error border color */
+    border-color: #ff3860;
 }
 
+
+/* code for error message */
 .input-box.error .error {
-    color: #ff3860; /* Error message color */
-    font-size: 11px; /* Error message font size */
-    height: 13px; /* Error message height */
+    color: #ff3860;
+    font-size: 11px;
+    height: 13px;
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+/* code for Gender title */
 form .gender-details .gender-title {
   font-size: 20px;
   font-weight: 500;
 }
+
+/* code for layout of three dots */
 form .category {
   display: flex;
   width: 80%;
   margin: 14px 0;
   justify-content: space-between;
 }
+
+/* code for Gender dots */
 form .category label {
   display: flex;
   align-items: center;
@@ -166,33 +181,18 @@ form .category label .dot {
   background: linear-gradient(90deg, #E50914, #221F20); /* Verander naar zwart */
   border-color: #d9d9d9; /* Of een andere kleur als je dat wilt */
 }
+
+/* to hide the gender dot */
 form input[type="radio"] {
   display: none;
 }
-body a.button{
-    display: inline-block;
-    background-color: #e50914;
-    color: #fff;
-    text-decoration: none;
-    padding: 12px 130px;
-    border-radius: 3px;
-}
-body a.button {
-    width: 100%;
-    padding: 13px 295px;
-    font-size: 1rem;
-    background: #e50914;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-    margin: 25px 0 10px;
-    cursor: pointer;
-    transition: 0.1s ease;
-}
 
-/* Responsive media query code for mobile devices */
+
+
+
+
+
+/* code if the screen changes (for mobile devices) */
 @media(max-width: 584px) {
   .container {
     max-width: 100%;
@@ -212,12 +212,14 @@ body a.button {
     width: 5px;
   }
 }
-/* Responsive media query code for mobile devices */
 @media(max-width: 459px) {
   .container .content .category {
     flex-direction: column;
   }
 }
+
+
+/* the following code is responsible for the Regsiter button */
 
 .button {
     background: linear-gradient(90deg, #E50914, #221F20); /* Button background color */
@@ -242,22 +244,29 @@ body a.button {
     font-size: 1.5rem; /* Change font size */
     font-weight: bold;
 }
-div.splash{
-    position:relative;
-    z-index: -1;
-}
-div.splash div.gradient{
-    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+
+
+
+
+
+
+
+
+/* the following code is responsible for the background of the page */
+
+div.gradient{ /* code responsible for the gradient of the background image */
     position:absolute;
     inset:0;
+    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
 }
-div.splash div.background{
+
+
+div.background{ /* code responsible for the background image */
     position:absolute;
-    z-index:1;
-    inset right:0;
-}
-div.splash div.background img{
-    height:100%;
     opacity: 0.6;
-    object-fit: cover;
+}
+
+div.splash{ /* code responsible for the positioning of the entire background */
+    position:relative;
+    z-index: -1;
 }
