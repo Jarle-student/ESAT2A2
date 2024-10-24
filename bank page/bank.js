@@ -1,3 +1,7 @@
+// This document was partially created with the assistance of AI tools,
+// including code generation from ChatGPT.
+
+
 document.getElementById("card").addEventListener("input", function(event) {
     let cardNumber = event.target.value.replace(/\s+/g, ''); // Remove all spaces
     if (cardNumber.length > 0) {
