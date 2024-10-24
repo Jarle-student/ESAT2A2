@@ -1,3 +1,7 @@
+// This document was partially created with the assistance of AI tools,
+// including code generation from ChatGPT.
+
+
 const form = document.getElementById('userForm');
 const firstname = document.getElementById('firstname');
 const email = document.getElementById('email');
