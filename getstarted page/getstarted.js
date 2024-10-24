@@ -1,7 +1,7 @@
 // This document was partially created with the assistance of AI tools,
 // including code generation from ChatGPT.
 
-
+// Get references to the form and input fields
 const form = document.getElementById('userForm');
 const firstname = document.getElementById('firstname');
 const email = document.getElementById('email');
@@ -10,37 +10,43 @@ const password2 = document.getElementById('confirm');
 const lastname = document.getElementById('lastname');
 const phone = document.getElementById('phone');
 
+// Add an event listener for form submission
 form.addEventListener('submit', e => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault(); // Prevent the default form submission
 
+    // Validate inputs before proceeding
     if (validateInputs()) {
-        window.location.href = 'keuze.html'; // Redirect if all validations are successful
+        window.location.href = 'keuze.html'; // Redirect to keuze.html if all validations are successful
     }
 });
 
+// Function to display error messages
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
 
     errorDisplay.innerText = message;
-    inputControl.classList.add('error');
+    inputControl.classList.add('error'); // Add error class for styling
     inputControl.classList.remove('success');
 };
 
+// Function to indicate successful validation
 const setSuccess = element => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
 
     errorDisplay.innerText = '';
-    inputControl.classList.add('success');
+    inputControl.classList.add('success'); // Add success class for styling
     inputControl.classList.remove('error');
 };
 
+// Function to validate email format
 const isValidEmail = email => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 };
 
+// Function to validate all input fields
 const validateInputs = () => {
     const firstnameValue = firstname.value.trim();
     const lastnameValue = lastname.value.trim();
@@ -49,7 +55,7 @@ const validateInputs = () => {
     const passwordValue = password.value.trim();
     const password2Value = password2.value.trim();
 
-    let isValid = true; // Track overall validity
+    let isValid = true; // For overall validity
 
     // Validate First Name
     if (firstnameValue === '') {
