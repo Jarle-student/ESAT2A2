@@ -1,14 +1,14 @@
-* {
+* { /* for everything */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-img{ /* voor alle afbeeldingen */
+img{ /* for all images */
     max-width: 100%;
     top: -100px;
 }
-body {
+body { /* code for the body */
     background: #000;
 }
 body::before {
@@ -25,7 +25,7 @@ body::before {
 
 
 
-
+/* code for the Netflix logo */
 body a.logo{
     display: block;
 }
@@ -45,29 +45,7 @@ a.logo {
     top: -100px;
 }
 
-
-div.splash{
-    position:relative;
-    z-index: -1;
-}
-div.splash div.gradient{
-    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
-    position:absolute;
-    inset:0;
-}
-div.splash div.background{
-    position:absolute;
-    z-index:1;
-    inset right:0;
-}
-div.splash div.background img{
-    height:100%;
-    opacity: 0.6;
-    object-fit: cover;
-}
-
-
-nav {  /* voor Netflix logo */
+nav {
     position: fixed;
     padding: 25px 60px;
     z-index: 1;
@@ -84,14 +62,38 @@ nav a img {
 
 
 
+/* the following code is responsible for the background of the page */
+
+div.gradient{ /* code responsible for the gradient of the background image */
+    position:absolute;
+    inset:0;
+    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+}
+
+
+div.background{ /* code responsible for the background image */
+    position:absolute;
+    opacity: 0.6;
+}
+
+div.splash{ /* code responsible for the positioning of the entire background */
+    position:relative;
+    z-index: -1;
+}
+
+
+
+
+
+/* code for the 3 containers */
 .container {
-    position: absolute; /* Use absolute positioning */
+    position: absolute;
     width: 320px;
     height: 580px;
     background: #fff;
     padding: 25px 30px;
     border-radius: 20px;
-    z-index: 2; /* Higher than the background */
+    z-index: 2;
     cursor: pointer;
 
 }
@@ -99,26 +101,19 @@ nav a img {
 
 
 #container-1 {
-    top: 200px; /* Adjust this value to move the container */
-    left: 250px; /* Adjust this value for horizontal positioning */
-
-
+    top: 200px;
+    left: 250px;
 }
 
-
-
-
 #container-2 {
-    top: 200px; /* Adjust this value to move the container */
+    top: 200px;
     left: 580px;
-
 }
 
 
 #container-3 {
-    top: 200px; /* Adjust this value to move the container */
-    left: 910px; /* Adjust this value for horizontal positioning */
-
+    top: 200px;
+    left: 910px;
 }
 
 
@@ -127,17 +122,17 @@ nav a img {
     display: none; /* Hide the radio button */
 }
 
+/* code for the red line when a container is chosen */
 .container label {
     display: block;
-    width: 100%; /* Make the label take the full width of the container */
-    height: 100%; /* Make the label take the full height of the container */
-    border-radius: 20px; /* Rounded corners */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-    position: absolute; /* Use absolute positioning */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-
 
 .container input:checked + label {
     border: 5px solid #E50914; /* Highlight selected container */
@@ -146,17 +141,7 @@ nav a img {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+/* code for the titles of the containers */
 .small-containers {
     position: absolute;
     width: 270px;
@@ -164,106 +149,72 @@ nav a img {
     background: linear-gradient(90deg, #E50914, #221F20);
     padding: 25px;
     border-radius: 20px;
-    z-index: 3; /* Higher than the background */
+    z-index: 3;
 
+}
+h4, h5, h6 {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
 }
 
 
 
-h4 {
-    font-size: 20px; /* Adjust the font size as needed */
-    color: #fff; /* Change text color */
-    text-align: center; /* Center align the text */
-    margin-top: 5px; /* Add some margin */
-}
-
-h5 {
-    font-size: 20px; /* Adjust the font size as needed */
-    color: #fff; /* Change text color */
-    text-align: center; /* Center align the text */
-    margin-top: 5px; /* Add some margin */
-}
-
-h6 {
-    font-size: 20px; /* Adjust the font size as needed */
-    color: #fff; /* Change text color */
-    text-align: center; /* Center align the text */
-    margin-top: 5px; /* Add some margin */
-}
-
-
-
-
-
-
-
-
-
+/* code for the horizontal lines inside the containers */
 .separator {
-    height: 0.8px; /* Thickness of the line */
-    background-color: rgba(0, 0, 0, 0.3); /* Black with 80% opacity */
-    width: 100%; /* Full width */
+    height: 0.8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
     z-index: 5;
 }
 
 
 .separator.separator1 {
-
     margin-top: 150px;
 }
 
 
 
 .separator.separator2 {
-
     margin-top: 50px;
 }
 
 
 .separator.separator3 {
-
     margin-top: 50px;
 }
 
 
 .separator.separator4 {
-
     margin-top: 50px;
-
 }
 
 
 .separator.separator5 {
-
     margin-top: 50px;
-
 }
 
 
 .separator.separator6 {
-
     margin-top: 50px;
-
 }
 
 
 
-
+/* position and style of the text inside the containers */
 h11, h22, h33, h44, h55, h66 {
-    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; /* Change font family */
-    color: grey; /* Change text color */
-    font-size: 0.85rem; /* Change font size */
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    font-size: 0.85rem;
     font-weight: bold;
 }
 
 
 h111, h112, h113, h114, h115,h116,h117,h118,h119,h120,h121,h122,h123,h124,h125,h126,h127,h128 {
-    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; /* Change font family */
-    color: #343434; /* Change text color */
-    font-size: 0.85rem; /* Change font size */
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    color: #343434;
+    font-size: 0.85rem;
     font-weight: bold;
-
-
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -354,7 +305,7 @@ h116, h122, h128 {
 
 
 
-
+/* code for the title of the page */
 h1000 {
     position: relative;
     font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; /* Change font family */
@@ -377,7 +328,7 @@ h1000 {
 
 
 
-
+/* code for the Proceed to payment button */
 .button {
     background: #e50914; /* Button background color */
     padding: 10px 20px;        /* Padding around the text */
@@ -406,11 +357,6 @@ h1000 {
     color: white; /* Change text color */
     font-size: 1.5rem; /* Change font size */
     font-weight: bold;
-
-
-
-
-
 
 }
 
