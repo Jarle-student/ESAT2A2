@@ -2,19 +2,23 @@
 // including code generation from ChatGPT.
 
 
+
+// an event listener is added format the card number
 document.getElementById("card").addEventListener("input", function(event) {
-    let cardNumber = event.target.value.replace(/\s+/g, ''); // Remove all spaces
+    // remove all spaces and then insert a space every 4 digits
+    let cardNumber = event.target.value.replace(/\s+/g, '');
     if (cardNumber.length > 0) {
-        event.target.value = cardNumber.match(/.{1,4}/g).join(' '); // Insert space every 4 digits
+        event.target.value = cardNumber.match(/.{1,4}/g).join(' ');
     }
 });
 
+// an event listener is added format the date
 document.getElementById("date").addEventListener("input", function(event) {
     let input = event.target.value;
-    // Remove any non-digit or non-slash characters
+    // remove any non-digit or non-slash characters
     input = input.replace(/[^\d\/]/g, '');
 
-    // Automatically insert '/' after entering two digits for the month
+    // automatically insert '/' after entering the month
     if (input.length === 2 && !input.includes('/')) {
         event.target.value = input + '/';
     } else {
@@ -22,22 +26,24 @@ document.getElementById("date").addEventListener("input", function(event) {
     }
 });
 
-document.getElementById("checkoutForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission initially
 
-    // Get form values
+// add an event listener to the checkout form to handle form submission
+document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent form submission initially
+
+    // get form values
     const name = document.getElementById("name").value.trim();
     const code = document.getElementById("code").value.trim(); // CVC code
     const card = document.getElementById("card").value.replace(/\s+/g, ''); // Remove spaces for validation
     const date = document.getElementById("date").value.trim(); // Expiry date (MM/YY)
 
-    // Clear previous error messages
+    // clear previous error messages
     document.getElementById("nameError").textContent = '';
     document.getElementById("cardError").textContent = '';
     document.getElementById("dateError").textContent = '';
     document.getElementById("codeError").textContent = '';
 
-    // Regular expressions
+    // define correct expressions for validation
     const cardPattern = /^\d{16}$/; // 16 digits for card number
     const cvcPattern = /^\d{3,4}$/; // 3 or 4 digits for CVC code
     const datePattern = /^(0[1-9]|1[0-2])\/\d{2}$/; // Format MM/YY
