@@ -58,25 +58,6 @@ def convert_to_standard(list):
         encrypted_message = encrypted_message + char
     return encrypted_message
 
-def hex_to_text(string):
-    hex_string = ""
-
-    for i in range(len(string)):
-        if string[i] == "\\" or string[i] == "x":
-            hex_string += ""
-        else:
-            hex_string += string[i]
-
-    result_string = ''.join([chr(int(hex_string[i:i + 2], 16)) for i in range(0, len(hex_string), 2)])
-    return result_string
-
-def correct_iv(iv):
-    chopped_iv = ""
-    for i in range(len(iv) - 3):
-        chopped_iv += iv[i + 2]
-    text_iv = hex_to_text(chopped_iv)
-    return chopped_iv
-
 def encrypt():
     plain_text = input("Insert message here: ")
     text_list = convert_to_list(plain_text)
@@ -111,13 +92,4 @@ def main():
     print("This is the decrypted message: " + decrypted_message)
     return
 
-def main2():
-    iv = input("dump hier de iv: ")
-    hex_string = input("dump hier hexadecimal met strepen: ")
-    iv = correct_iv(iv)
-    key = iv + "ESAT2"
-    encrypted_text = correct_iv(hex_string)
-    decrypted_text = decrypt(encrypted_text, key)
-    print("dit is de gedecrypteerde text " + decrypted_text)
-
-main2()
+main()
