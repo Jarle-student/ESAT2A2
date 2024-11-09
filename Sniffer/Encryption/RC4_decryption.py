@@ -55,18 +55,27 @@ def extend_key(key):
         extended_key.append(key[i % key_lenght])
     return extended_key
 
-### generates a keystream using the extended key and turns it into 8-digit-binary.
-### it also gives the keystream the desired length to decrypt the packet.
-def generate_keystream_8_bin(extended_key, encrypted_packet_list):
-    keystream = [i for i in range(256)]
+### generates an S-box using the extended key. This S-box will be used to generate the keystream
+def generate_S_box(extended_key):
+    S_box = [i for i in range(256)]
     j = 0
     for i in range(256):
-        j = (j + keystream[j] + extended_key[i]) % 256
-        keystream[i], keystream[j] = keystream[j], keystream[i]
+        j = (j + S_box[i] + extended_key[i]) % 256
+        S_box[i], S_box[j] = S_box[j], S_box[i]
+    return S_box
 
-    while len(encrypted_packet_list) > len(keystream):
-        keystream = keystream + keystream
-    return decimal_list_to_bin_list(keystream[:len(encrypted_packet_list)])
+### generates the keystream using the S-box. It also gives the keystream the desired lenght to decrypt the message
+def generate_keystream_8_bin(extended_key, encrypted_packet_list):
+    S_box = generate_S_box(extended_key)
+    keystream = []
+    i = j = 0
+    for l in range(len(encrypted_packet_list)):
+        i = (i + 1) % 256
+        j = (j + S_box[i]) % 256
+        S_box[j], S_box[i] = S_box[i], S_box[j]
+        k = (S_box[i] + S_box[j]) % 256
+        keystream.append(S_box[k])
+    return decimal_list_to_bin_list(keystream)
 
 ### decrypts the encrypted packet using the keystream and the XOR operator
 def decrypt(keystream, encrypted_packet):
@@ -78,19 +87,19 @@ def decrypt(keystream, encrypted_packet):
 
 def main():
     ### INITIALIZING THE KEY ###
-    iv_b = b'\x9a\x02\x00'
-    key_hex = iv_b.hex() + "4553415432"
+    iv_b = b"\xAA\xBB\xCC"
+    key_hex = iv_b.hex() + b"ESAT2".hex()
     key_ascii_list = bin_list_to_decimal_list(hex_to_8_bin_list(key_hex))
     extended_key = extend_key(key_ascii_list)
 
 
     ### INITIALIZING THE PACKET ###
-    encrypted_packet_b = b',\xa1YoJ\x87\x80\xf2q\x85A\x10;\xaa/}'
+    encrypted_packet_b = b'S"\x9b,\x954Z\x8f\xb2\x9b\x81\xe5\x04\x1b\x023c'
     encrypted_packet_8_bin_list = hex_to_8_bin_list(encrypted_packet_b.hex())
 
 
     ### DECRYPTING THE PACKET ###
-    keystream = generate_keystream_8_bin(extended_key, encrypted_packet_8_bin_list)
+    keystream = generate_keystream_8_bin(extended_key,encrypted_packet_8_bin_list)
     decrypted_packet = decrypt(keystream, encrypted_packet_8_bin_list)
     print(decrypted_packet)
 
