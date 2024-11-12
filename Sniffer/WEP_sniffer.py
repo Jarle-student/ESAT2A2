@@ -1,5 +1,5 @@
 from scapy.all import *
-from decrypt import bin_list_to_decimal_list, hex_to_8_bin_list, extend_key, generate_keystream_8_bin, decrypt
+from RC4_decryption import bin_list_to_decimal_list, hex_to_8_bin_list, extend_key, generate_keystream_8_bin, decrypt
 
 
 def packet_handler(pkt, bssid, WEP_key):
