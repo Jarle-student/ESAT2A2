@@ -1,0 +1,170 @@
+*{ /* for all elements */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+img{ /* for all images */
+    max-width: 100%;
+}
+
+body { /* for the body of the page */
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    background: #000;
+}
+
+
+
+/* the following code is responsible for the background of the page */
+
+div.gradient{ /* code responsible for the gradient of the background image */
+    position:absolute;
+    inset:0;
+    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+}
+
+
+div.background{ /* code responsible for the background image */
+    position:absolute;
+    opacity: 0.6;
+}
+
+div.splash{ /* code responsible for the positioning of the entire background */
+    position:relative;
+    z-index: -1;
+}
+
+
+
+
+/* code responsible for the Netflix logo */
+header a.logo{
+    position: absolute;
+    top: 25px;
+    left: 60px;
+    fill: #e50914;
+    height: 27px;
+
+}
+/* code so that the logo will adapt to the size of the screen  */
+@media screen and (min-width:550px) {
+    header .logo svg{
+        height: 37px;
+    }
+
+
+/* code for the checkout box  */
+.wrapper{
+  padding: 10px;
+}
+
+.container{
+  max-width: 500px;
+  height: auto;
+  margin: 120px auto;
+  background: #fff;
+  padding: 20px 40px 30px;
+  border-radius: 5px;
+}
+
+
+
+/* code for the title */
+.title {
+
+  /* code so that we can use a linear gradient to a text */
+  background: linear-gradient(90deg, #E50914, #221F20);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+
+/* code for the text inside the box */
+.input-form .label{
+	display: block;
+    font-size: 1rem;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+
+.input-form .items{
+  margin-bottom: 20px;
+}
+
+
+/* code for the text boxes */
+.section-1 .items .input,
+.section-2 .items .input,
+.section-3 .items .input{
+    border: 2px solid #BDBDBD;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 3px;
+}
+
+/* code for the space between the two boxes of section 3 */
+.input-form .section-3{
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-form .section-3 .items{
+   width: 48%;
+}
+
+
+
+/* code so that the form box will adapt to the size of the screen  */
+@media screen and (max-width: 460px){
+  .input-form .section-3{
+    flex-direction: column;
+  }
+  .input-form .section-3 .items{
+     width: 100%;
+  }
+  .input-form .items{
+    margin-bottom: 10px;
+  }
+
+  .input-form{
+    margin-bottom: 15px;
+  }
+  .title{
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+}
+
+
+/* code for the Proceed button  */
+.button {
+    background: linear-gradient(90deg, #E50914, #221F20);
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 420px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+
+/* code for the error messages */
+
+.error {
+    color: red;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+
+}

@@ -1,0 +1,362 @@
+* { /* for everything */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+img{ /* for all images */
+    max-width: 100%;
+    top: -100px;
+}
+body { /* code for the body */
+    background: #000;
+}
+body::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background: url("images/hero-img.jpg");
+    background-position: center;
+}
+
+
+
+/* code for the Netflix logo */
+body a.logo{
+    display: block;
+}
+
+body .logo svg{
+    fill: #e50914;
+    height: 27px;
+}
+@media screen and (min-width:550px) {
+    body .logo svg{
+        height: 37px;
+    }
+
+
+a.logo {
+    position: relative;
+    top: -100px;
+}
+
+nav {
+    position: fixed;
+    padding: 25px 60px;
+    z-index: 1;
+}
+
+nav a img {
+    width: 167px;
+}
+
+
+
+
+
+
+
+
+/* the following code is responsible for the background of the page */
+
+div.gradient{ /* code responsible for the gradient of the background image */
+    position:absolute;
+    inset:0;
+    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+}
+
+
+div.background{ /* code responsible for the background image */
+    position:absolute;
+    opacity: 0.6;
+}
+
+div.splash{ /* code responsible for the positioning of the entire background */
+    position:relative;
+    z-index: -1;
+}
+
+
+
+
+
+/* code for the 3 containers */
+.container {
+    position: absolute;
+    width: 320px;
+    height: 580px;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 20px;
+    z-index: 2;
+    cursor: pointer;
+
+}
+
+
+
+#container-1 {
+    top: 200px;
+    left: 250px;
+}
+
+#container-2 {
+    top: 200px;
+    left: 580px;
+}
+
+
+#container-3 {
+    top: 200px;
+    left: 910px;
+}
+
+
+
+.container input {
+    display: none; /* Hide the radio button */
+}
+
+/* code for the red line when a container is chosen */
+.container label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container input:checked + label {
+    border: 5px solid #E50914; /* Highlight selected container */
+}
+
+
+
+
+/* code for the titles of the containers */
+.small-containers {
+    position: absolute;
+    width: 270px;
+    height: 75px;
+    background: linear-gradient(90deg, #E50914, #221F20);
+    padding: 25px;
+    border-radius: 20px;
+    z-index: 3;
+
+}
+h4, h5, h6 {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+
+/* code for the horizontal lines inside the containers */
+.separator {
+    height: 0.8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    z-index: 5;
+}
+
+
+.separator.separator1 {
+    margin-top: 150px;
+}
+
+
+
+.separator.separator2 {
+    margin-top: 50px;
+}
+
+
+.separator.separator3 {
+    margin-top: 50px;
+}
+
+
+.separator.separator4 {
+    margin-top: 50px;
+}
+
+
+.separator.separator5 {
+    margin-top: 50px;
+}
+
+
+.separator.separator6 {
+    margin-top: 50px;
+}
+
+
+
+/* position and style of the text inside the containers */
+h11, h22, h33, h44, h55, h66 {
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+
+h111, h112, h113, h114, h115,h116,h117,h118,h119,h120,h121,h122,h123,h124,h125,h126,h127,h128 {
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    color: #343434;
+    font-size: 0.85rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+h11 {
+
+    position: relative;
+
+    top: 100px;
+
+}
+
+
+h111, h117, h123 {
+
+    position: relative;
+
+    top: 130px;
+
+    left: -94px;
+
+}
+
+
+h112, h118, h124 {
+
+    position: relative;
+
+    top: 30px;
+
+    left: -159px;
+
+
+}
+
+
+h113, h119,h125 {
+
+    position: relative;
+
+    top: 30px;
+
+    left: -71px;
+
+
+}
+
+
+
+
+h114, h120, h126 {
+
+    position: relative;
+
+    top: 20px;
+
+
+
+}
+
+
+
+h115, h121, h127 {
+
+    position: relative;
+
+    top: 30px;
+
+    left: -93px;
+
+}
+
+h116, h122, h128 {
+
+    position: relative;
+
+    top: 30px;
+
+    left: -119px;
+
+}
+
+
+
+
+
+
+
+/* code for the title of the page */
+h1000 {
+    position: relative;
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; /* Change font family */
+    color: white; /* Change text color */
+    font-size: 2.2rem; /* Change font size */
+    font-weight: bold;
+    z-index: 10;
+
+    top: 120px;
+    left: 255px;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* code for the Proceed to payment button */
+.button {
+    background: #e50914; /* Button background color */
+    padding: 10px 20px;        /* Padding around the text */
+    border-radius: 5px;        /* Rounded corners */
+    text-decoration: none;     /* Remove underline */
+    font-size: 16px;           /* Adjust font size */
+    display: flex;
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    text-align: center;        /* Center align the text */
+
+
+    align-items: center;
+    justify-content: center;
+
+
+    height: 60px;
+    width: 550px;
+
+    position: relative;
+    top: 760px;
+    left: 465px;
+
+
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; /* Change font family */
+    color: white; /* Change text color */
+    font-size: 1.5rem; /* Change font size */
+    font-weight: bold;
+
+}
+
