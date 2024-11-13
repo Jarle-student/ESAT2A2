@@ -1,0 +1,92 @@
+[
+  {
+    "firstname": "Arthur",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "9e51bdc8-17e9-46f7-ac74-202d75c8bc68",
+    "bankDetails": {
+      "name": "Arthur Cukier",
+      "card": "1111111111111111",
+      "date": "11/11",
+      "code": "111",
+      "userId": "9e51bdc8-17e9-46f7-ac74-202d75c8bc68"
+    }
+  },
+  {
+    "firstname": "John",
+    "lastname": "Doe",
+    "phone": "0478895612",
+    "email": "john.doe@gmail.com",
+    "password": "bbbbbbbbbbbbbbbbbb",
+    "id": "278c3da4-eec2-4b4e-a4e6-b14065701b07",
+    "bankDetails": {
+      "name": "John Doe",
+      "card": "2222222222222222",
+      "date": "02/02",
+      "code": "222",
+      "userId": "278c3da4-eec2-4b4e-a4e6-b14065701b07"
+    }
+  },
+  {
+    "firstname": "Giel",
+    "lastname": "Swenters",
+    "phone": "0454785698",
+    "email": "giel.swenters@gmail.com",
+    "password": "dhezifvbhnoez",
+    "id": "c284e151-266c-4649-97e9-29680bb81faa",
+    "bankDetails": {
+      "name": "Giel Swenters",
+      "card": "3333333333333333",
+      "date": "03/03",
+      "code": "333",
+      "userId": "c284e151-266c-4649-97e9-29680bb81faa"
+    }
+  },
+  {
+    "firstname": "Jarle",
+    "lastname": "Braeken",
+    "phone": "0412455678",
+    "email": "jarle.braeken@gmail.com",
+    "password": "JarleIsDeBest",
+    "id": "3fef9278-e84b-4f45-882d-377d3bedab41",
+    "bankDetails": {
+      "name": "Jarle Braeken",
+      "card": "5555555555555555",
+      "date": "01/01",
+      "code": "555",
+      "userId": "3fef9278-e84b-4f45-882d-377d3bedab41"
+    }
+  },
+  {
+    "firstname": "Robin",
+    "lastname": "Dericks",
+    "phone": "0412121212",
+    "email": "robin@yahoo.com",
+    "password": "RobinRobin",
+    "id": "da5c02ed-4c71-45fc-bbed-ba42cb424835",
+    "bankDetails": {
+      "name": "Robin Derick",
+      "card": "5555555555555555",
+      "date": "02/02",
+      "code": "555",
+      "userId": "da5c02ed-4c71-45fc-bbed-ba42cb424835"
+    }
+  },
+  {
+    "firstname": "Nathan",
+    "lastname": "Herman",
+    "phone": "0412141414",
+    "email": "nathan@gmail.com",
+    "password": "nathannathan",
+    "id": "852d9fb3-5042-4769-b080-c26fc13323f8",
+    "bankDetails": {
+      "name": "Nathan Herman",
+      "card": "2222222222222222",
+      "date": "03/06",
+      "code": "222",
+      "userId": "852d9fb3-5042-4769-b080-c26fc13323f8"
+    }
+  }
+]
