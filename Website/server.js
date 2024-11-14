@@ -79,5 +79,30 @@ app.post('/bank', (req, res) => {
     }
 });
 
+// Login endpoint
+app.post('/login', (req, res) => {
+    const loginData = req.body;
+
+    // Read the users data
+    let users = [];
+    try {
+        users = JSON.parse(fs.readFileSync('users.json', 'utf-8'));
+    } catch (err) {
+        console.error('Error reading users.json:', err);
+        return res.status(500).send({ message: 'Error reading user data' });
+    }
+
+    // Find the user by email and password
+    const user = users.find(user => user.email === loginData.email && user.password === loginData.password);
+
+    if (user) {
+        // User found and credentials match
+        res.status(200).send({ message: 'Login successful!' });
+    } else {
+        // User not found or credentials don't match
+        res.status(401).send({ message: 'Incorrect data' });
+    }
+});
+
 // Start the server and listen on port 3000
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

@@ -1,0 +1,152 @@
+{ /* for everything */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+img{ /* for all images */
+    max-width: 100%;
+}
+
+body { /* for everything inside the body */
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    background: #000;
+}
+
+body::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background: url("images/hero-img.jpg");
+    background-position: center;
+}
+
+
+
+/* Code for the Netflix logo */
+body a.logo {
+    display: block;
+}
+
+body .logo svg {
+    fill: #e50914;
+    height: 27px; /* Default height */
+}
+
+@media screen and (min-width: 550px) {
+    body .logo svg { height: 37px; } /* Height for larger screens */
+}
+
+nav {
+    position: fixed;
+    padding: 25px 60px;
+    z-index: 1;
+}
+
+nav a img {
+    width: 167px;
+}
+
+
+
+
+
+
+
+/* the following code is responsible for the background of the page */
+
+div.gradient{ /* code responsible for the gradient of the background image */
+    position:absolute;
+    inset:0;
+    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+}
+
+
+div.background{ /* code responsible for the background image */
+    position:absolute;
+    opacity: 0.6;
+}
+
+div.splash{ /* code responsible for the positioning of the entire background */
+    position:relative;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+/* code for the error message */
+.form-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 4px;
+    padding: 0;
+    width: 750px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, .75);
+}
+
+/* code for the error message: text h1*/
+.form-wrapper h1 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+/* code for the error message: text h2*/
+.form-wrapper h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    font-weight: normal;
+
+}
+/* code for the error message: text h13*/
+.form-wrapper h3 {
+    color: #fff;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+
+}
+
+
+
+/* code for the padding inside the error box*/
+
+.form-wrapper .content {
+
+    padding: 70px 50px;
+
+
+}
+
+
+
+
+/* code for the button  */
+.button {
+    background: #E50914;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 420px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    left: 150px;
+
+}

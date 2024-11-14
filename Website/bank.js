@@ -85,7 +85,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(even
         .then(data => {
             console.log('Success:', data);
             if (data.message === 'Bank details submitted successfully!') {
-                window.location.href = 'fout.html'; // Redirect if successful
+                window.location.href = 'fout2.html'; // Redirect if successful
             }
         })
         .catch((error) => {

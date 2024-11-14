@@ -1,0 +1,272 @@
+*{ /* for everything */
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{ /* for the body */
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    background-color: #000;
+}
+img{ /* for all images */
+    max-width: 100%;
+}
+
+/* changes of sizes when the screen size changes */
+@media screen and (min-width:550px) {
+    header .logo svg{
+        height: 37px;
+    }
+
+@media screen and (min-width:550px) {
+    header div.select{
+        margin-right: 30px;
+    }
+}
+
+/* code for everything inside the header section in the HTML file*/
+header{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    padding: 26px 20px;
+    position:absolute;
+    width: 100%;
+    z-index: 5;
+}
+
+/* code for the Netflix logo*/
+a.logo{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    padding: 1px 20px;
+    position:relative;
+    width: 100%;
+    z-index: 5;
+}
+body .logo svg{
+    fill: #e50914;
+    height: 27px;
+}
+@media screen and (min-width:550px) {
+    body .logo svg{
+        height: 37px;
+    }
+
+
+
+/* code for the white box for the regitration*/
+.container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    height: 500px;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    top: 100px;
+}
+
+/* code for the title of the registration form*/
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+/* code for the small horizontal bar under the title of the registration form*/
+.container .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #E50914, #221F20);
+}
+
+
+
+
+
+.content form .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+.user-details .input-box input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+
+
+/* code for user input boxes */
+.user-details .input-box input {
+    outline: 0;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* code for success color */
+.input-box.success input {
+    border-color: #09c372;
+}
+
+/* code for error color */
+.input-box.error input {
+    border-color: #ff3860;
+}
+
+
+/* code for error message */
+.input-box.error .error {
+    color: #ff3860;
+    font-size: 11px;
+    height: 13px;
+}
+
+
+
+
+/* code for Gender title */
+form .gender-details .gender-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* code for layout of three dots */
+form .category {
+  display: flex;
+  width: 80%;
+  margin: 14px 0;
+  justify-content: space-between;
+}
+
+/* code for Gender dots */
+form .category label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+form .category label .dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two,
+#dot-3:checked~.category label .three {
+  background: linear-gradient(90deg, #E50914, #221F20); /* Verander naar zwart */
+  border-color: #d9d9d9; /* Of een andere kleur als je dat wilt */
+}
+
+/* to hide the gender dot */
+form input[type="radio"] {
+  display: none;
+}
+
+
+
+
+
+
+/* code if the screen changes (for mobile devices) */
+@media(max-width: 584px) {
+  .container {
+    max-width: 100%;
+  }
+  form .user-details .input-box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category {
+    width: 100%;
+  }
+  .content form .user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+@media(max-width: 459px) {
+  .container .content .category {
+    flex-direction: column;
+  }
+}
+
+
+/* the following code is responsible for the Regsiter button */
+
+.button {
+    background: linear-gradient(90deg, #E50914, #221F20); /* Button background color */
+    padding: 10px 20px;        /* Padding around the text */
+    font-size: 16px;           /* Adjust font size */
+    display: flex;
+    cursor: pointer;           /* Pointer cursor on hover */
+
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    width: 650px;
+
+    position: absolute;
+    top: 425px;
+    left: 26px;
+    z-index: 15;
+
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; /* Change font family */
+    color: white; /* Change text color */
+    font-size: 1.5rem; /* Change font size */
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+/* the following code is responsible for the background of the page */
+
+div.gradient{ /* code responsible for the gradient of the background image */
+    position:absolute;
+    inset:0;
+    background-image: linear-gradient(to top,rgba(0,0,0,.8) 0,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%);
+}
+
+
+div.background{ /* code responsible for the background image */
+    position:absolute;
+    opacity: 0.6;
+}
+
+div.splash{ /* code responsible for the positioning of the entire background */
+    position:relative;
+    z-index: -1;
+}

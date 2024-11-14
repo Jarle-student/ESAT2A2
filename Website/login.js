@@ -1,9 +1,3 @@
-
-
-// This document was partially created with the assistance of AI tools,
-// including code generation from ChatGPT.
-
-
 document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent form submission
 
@@ -34,12 +28,34 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         valid = false;
     }
 
-    // Redirect to keuze.html if the form is valid, otherwise show error messages
     if (valid) {
-        // Redirect to keuze.html
-        window.location.href = 'fout.html';
+        // Prepare the login data (contact can be either phone or email)
+        const loginData = { email: contact, password: password };
+
+        // Send login request to the server
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Login successful!') {
+                // Redirect to fout.html if login is successful
+                window.location.href = 'fout.html';
+            } else {
+                // Display error message if login fails
+                document.getElementById('contactError').textContent = 'Incorrect data';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error logging in');
+        });
     } else {
-        // Display error messages in red (handled by error spans in the form)
-        return false; // Stay on the page and show errors
+        // Stay on the page and show errors if validation fails
+        return false;
     }
 });

@@ -26,7 +26,7 @@ def decrypt_packet(wepdata, iv, WEP_key):
 
 
 def start_sniffer(interface, bssid, WEP_key):
-    """Start the wireless sniffer with specified parameters"""
+    print("Starting Sniffer")
     try:
         sniff(
             iface=interface,
@@ -44,7 +44,7 @@ def main():
     bssid = "bssid"
     WEP_key = "wep key"
     start_sniffer(interface, bssid, WEP_key)
-
+    conf.channel = 1
 
 if __name__ == "__main__":
     main()
