@@ -11,7 +11,7 @@ def packet_handler(pkt, bssid, WEP_key):
                 print(f"BSSID: {bssid}")
                 print(f"Source: {pkt.addr2}")
                 print(f"Destination: {pkt.addr1}")
-                print(decrypt_packet(pkt[wepdata], iv, WEP_key))
+                print(decrypt_packet(pkt[Dot11WEP].wepdata, iv, WEP_key))
 
 def decrypt_packet(wepdata, iv, WEP_key):
     key_hex = iv.hex() + WEP_key.encode("utf-8").hex()
