@@ -1,5 +1,5 @@
 from scapy.all import *
-from RC4_decryption import bin_list_to_decimal_list, hex_to_8_bin_list, extend_key, generate_keystream_8_bin, decrypt
+from Encryption.RC4_decryption import bin_list_to_decimal_list, hex_to_8_bin_list, extend_key, generate_keystream_8_bin, decrypt
 
 
 def packet_handler(pkt, bssid, WEP_key):
@@ -11,7 +11,7 @@ def packet_handler(pkt, bssid, WEP_key):
                 print(f"BSSID: {bssid}")
                 print(f"Source: {pkt.addr2}")
                 print(f"Destination: {pkt.addr1}")
-                print(decrypt_packet(pkt[Dot11WEP].wepdata, iv, WEP_key))
+                print(decrypt_packet(pkt[wepdata], iv, WEP_key))
 
 def decrypt_packet(wepdata, iv, WEP_key):
     key_hex = iv.hex() + WEP_key.encode("utf-8").hex()
@@ -40,9 +40,9 @@ def start_sniffer(interface, bssid, WEP_key):
 
 
 def main():
-    interface = "interface"
-    bssid = "bssid"
-    WEP_key = "wep key"
+    interface = "wlan0"
+    bssid = "08:BE:AC:03:DC:3E"
+    WEP_key = "ESAT2"
     start_sniffer(interface, bssid, WEP_key)
 
 
