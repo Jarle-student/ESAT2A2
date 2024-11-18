@@ -131,3 +131,12 @@ div.splash{ /* code responsible for the positioning of the entire background */
 
 
 }
+
+
+
+/* Style for the undefined text or error message */
+p {
+    font-size: 1.2em;
+    color: #FFFFFF;
+    font-weight: bold;
+}
