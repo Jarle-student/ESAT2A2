@@ -73,8 +73,11 @@ document.getElementById("checkoutForm").addEventListener("submit", function(even
             userId: sessionStorage.getItem('userId') // Retrieve the userId from sessionStorage
         };
 
+        // Dynamically get the server's base URL
+        const serverBaseUrl = window.location.origin;
+
         // Send data to the server
-        fetch('http://localhost:3000/bank', {
+        fetch(`${serverBaseUrl}/bank`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,3 +97,4 @@ document.getElementById("checkoutForm").addEventListener("submit", function(even
         });
     }
 });
+
