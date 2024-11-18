@@ -6,8 +6,8 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     document.getElementById('passwordError').textContent = '';
 
     // Get form values
-    const contact = document.getElementById('contact').value;
-    const password = document.getElementById('password').value;
+    const contact = document.getElementById('contact').value.trim();
+    const password = document.getElementById('password').value.trim();
 
     // Regular expression for Belgian phone number (starts with 04 + 8 digits)
     const phonePattern = /^04\d{8}$/;
@@ -22,7 +22,7 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         valid = false;
     }
 
-    // Validate password (optional: add your own password criteria)
+    // Validate password
     if (password.length < 8) { // Example of simple password check
         document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long.';
         valid = false;
@@ -32,8 +32,11 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         // Prepare the login data (contact can be either phone or email)
         const loginData = { email: contact, password: password };
 
+        // Dynamically get the server's base URL
+        const serverBaseUrl = window.location.origin;
+
         // Send login request to the server
-        fetch('http://localhost:3000/login', {
+        fetch(`${serverBaseUrl}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,12 +45,13 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.message === 'Login successful!') {
-                // Redirect to fout.html if login is successful
-                window.location.href = 'fout.html';
+            // Check if the response message indicates success
+            if (data.firstname) { // Check if firstname is present in the response
+                // Redirect to fout.html with the firstname query parameter
+                window.location.href = `fout.html?firstname=${encodeURIComponent(data.firstname)}`;
             } else {
                 // Display error message if login fails
-                document.getElementById('contactError').textContent = 'Incorrect data';
+                document.getElementById('contactError').textContent = 'Incorrect email or password.';
             }
         })
         .catch(error => {
