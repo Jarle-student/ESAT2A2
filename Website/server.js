@@ -1,5 +1,6 @@
 const express = require('express'); // Import Express
 const fs = require('fs'); // Import File System
+const cors = require('cors'); // Import CORS for cross-origin requests
 
 const app = express(); // Create an instance of Express
 
@@ -8,6 +9,9 @@ app.use(express.json());
 
 // Middleware to serve static files from the 'public' directory
 app.use(express.static('public'));
+
+// Enable CORS for all origins
+app.use(cors());
 
 const uuid = require('uuid'); // Use a package like uuid to generate unique IDs
 
@@ -22,7 +26,9 @@ app.post('/register', (req, res) => {
     // Attempt to read and update users.json
     let users = [];
     try {
-        users = JSON.parse(fs.readFileSync('users.json', 'utf-8'));
+        if (fs.existsSync('users.json')) {
+            users = JSON.parse(fs.readFileSync('users.json', 'utf-8'));
+        }
     } catch (err) {
         console.error('Error reading users.json:', err);
     }
@@ -52,7 +58,9 @@ app.post('/bank', (req, res) => {
     // Read the users data
     let users = [];
     try {
-        users = JSON.parse(fs.readFileSync('users.json', 'utf-8'));
+        if (fs.existsSync('users.json')) {
+            users = JSON.parse(fs.readFileSync('users.json', 'utf-8'));
+        }
     } catch (err) {
         console.error('Error reading users.json:', err);
         return res.status(500).send({ message: 'Error reading user data' });
@@ -83,26 +91,47 @@ app.post('/bank', (req, res) => {
 app.post('/login', (req, res) => {
     const loginData = req.body;
 
+    if (!loginData.email || !loginData.password) {
+        return res.status(400).send({ message: 'Email and password are required' });
+    }
+
     // Read the users data
     let users = [];
     try {
-        users = JSON.parse(fs.readFileSync('users.json', 'utf-8'));
+        if (fs.existsSync('users.json')) {
+            users = JSON.parse(fs.readFileSync('users.json', 'utf-8'));
+        }
     } catch (err) {
         console.error('Error reading users.json:', err);
         return res.status(500).send({ message: 'Error reading user data' });
     }
 
+    // Normalize loginData (trim whitespaces, convert to lowercase for email comparison)
+    const email = loginData.email.trim().toLowerCase();
+    const password = loginData.password.trim(); // Keep password as is, but trim any spaces
+
     // Find the user by email and password
-    const user = users.find(user => user.email === loginData.email && user.password === loginData.password);
+    const user = users.find(user => user.email.trim().toLowerCase() === email && user.password === password);
 
     if (user) {
-        // User found and credentials match
-        res.status(200).send({ message: 'Login successful!' });
+        res.status(200).send({ message: `Welcome, ${user.firstname}!`, firstname: user.firstname });
     } else {
-        // User not found or credentials don't match
-        res.status(401).send({ message: 'Incorrect data' });
+        res.status(401).send({ message: 'Incorrect email or password' });
     }
 });
 
+// Congratulations route
+app.get('/fout.html', (req, res) => {
+    const { firstname } = req.query;
+    if (!firstname) {
+        return res.status(400).send({ message: 'Firstname is missing from the query' });
+    }
+    res.send(`
+        <h1>Congratulations, ${firstname}!</h1>
+        <p>You've successfully logged in.</p>
+    `);
+});
+
 // Start the server and listen on port 3000
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => console.log(`Server running on http://0.0.0.0:${PORT}`));
