@@ -6,6 +6,9 @@ const password2 = document.getElementById('confirm');
 const lastname = document.getElementById('lastname');
 const phone = document.getElementById('phone');
 
+// Replace 'localhost' with a dynamic server address
+const serverBaseUrl = window.location.origin; // Dynamically get the server's base URL
+
 form.addEventListener('submit', e => {
     e.preventDefault(); // Prevent form submission
 
@@ -20,7 +23,7 @@ form.addEventListener('submit', e => {
         };
 
         // Send data to the server using fetch
-        fetch('http://localhost:3000/register', {
+        fetch(`${serverBaseUrl}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
