@@ -1,1 +1,76 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #141414; /* Dark background for Netflix-like style */
+    color: white;
+}
+
+/* Header */
+header {
+    background-color: #E50914; /* Netflix Red */
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    margin-bottom: 20px; /* Space below the header to prevent the table from touching */
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Main Content */
+main {
+    display: flex;
+    justify-content: center; /* Horizontally center the table */
+    align-items: flex-start; /* Align items from the top (prevent vertical centering) */
+    padding: 2em;
+    width: 100%; /* Ensure main content takes up full width */
+}
+
+/* Table */
+table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-top: 20px; /* Increased margin to add spacing between table and header */
+    background-color: #333;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* Table Headers */
+th {
+    background-color: #E50914; /* Netflix Red for header */
+    color: white;
+    text-align: left;
+    padding: 12px 15px; /* Adjust padding */
+    font-size: 16px; /* Make header text larger */
+    text-transform: uppercase; /* Uppercase headers for a cleaner look */
+}
+
+/* Table Data */
+td {
+    padding: 12px 15px; /* Adjust padding */
+    border-bottom: 1px solid #444; /* Darker border for data rows */
+    word-wrap: break-word;
+    max-width: 400px; /* Prevent overly long content */
+    color: #ddd; /* Light gray text color for the data */
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+    background-color: #444; /* Darken row background on hover */
+}
+
+/* Highlight alternating rows */
+tbody tr:nth-child(odd) {
+    background-color: #2c2c2c; /* Darker row background for alternating rows */
+}
+
+/* Adjust the table's overall appearance */
+table, th, td {
+    border: 1px solid #444; /* Dark borders for the table */
+}
 
