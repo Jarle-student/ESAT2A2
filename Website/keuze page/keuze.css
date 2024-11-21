@@ -43,6 +43,7 @@ body .logo svg{
 a.logo {
     position: relative;
     top: -100px;
+    z-index: 10;
 }
 
 nav {
