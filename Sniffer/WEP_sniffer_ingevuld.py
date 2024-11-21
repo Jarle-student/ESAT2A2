@@ -40,8 +40,8 @@ def start_sniffer(interface, bssid, WEP_key):
 
 
 def main():
-    interface = "wlan0"
-    bssid = "08:BE:AC:03:DC:3E"
+    interface = "wlan0mon"
+    bssid = "74:DA:38:EB:6F:DC"
     WEP_key = "ESAT2"
     start_sniffer(interface, bssid, WEP_key)
 
