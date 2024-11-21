@@ -1,7 +1,3 @@
-// This document was partially created with the assistance of AI tools,
-// including code generation from ChatGPT.
-
-
 document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent form submission
 
@@ -10,8 +6,8 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     document.getElementById('passwordError').textContent = '';
 
     // Get form values
-    const contact = document.getElementById('contact').value;
-    const password = document.getElementById('password').value;
+    const contact = document.getElementById('contact').value.trim();
+    const password = document.getElementById('password').value.trim();
 
     // Regular expression for Belgian phone number (starts with 04 + 8 digits)
     const phonePattern = /^04\d{8}$/;
@@ -26,18 +22,47 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         valid = false;
     }
 
-    // Validate password (optional: add your own password criteria)
+    // Validate password
     if (password.length < 8) { // Example of simple password check
         document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long.';
         valid = false;
     }
 
-    // Redirect to keuze.html if the form is valid, otherwise show error messages
     if (valid) {
-        // Redirect to keuze.html
-        window.location.href = 'fout.html';
+        // Prepare the login data (contact can be either phone or email)
+        const loginData = { email: contact, password: password };
+
+        // Dynamically get the server's base URL
+        const serverBaseUrl = window.location.origin;
+
+        // Send login request to the server
+        fetch(`${serverBaseUrl}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Check if the response message indicates success
+            if (data.userId) { // Check if userId is present in the response (indicating success)
+                // Store the userId in sessionStorage
+                sessionStorage.setItem('userId', data.userId);
+
+                // Redirect to fout.html with the firstname query parameter
+                window.location.href = `fout.html?firstname=${encodeURIComponent(data.firstname)}`;
+            } else {
+                // Display error message if login fails
+                document.getElementById('contactError').textContent = 'Incorrect email or password.';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error logging in');
+        });
     } else {
-        // Display error messages in red (handled by error spans in the form)
-        return false; // Stay on the page and show errors
+        // Stay on the page and show errors if validation fails
+        return false;
     }
 });

