@@ -6,4 +6,6 @@ def sniffing(interface):
 def process_packet(packet):
 	print(packet)
 
-sniffing('wlan0')
+
+sniffing('Wi-Fi')
+#sniffing('wlan0')
