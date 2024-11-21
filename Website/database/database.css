@@ -55,7 +55,7 @@ td {
     padding: 12px 15px; /* Adjust padding */
     border-bottom: 1px solid #444; /* Darker border for data rows */
     word-wrap: break-word;
-    max-width: 400px; /* Prevent overly long content */
+    max-width: 250px; /* Prevent overly long content */
     color: #ddd; /* Light gray text color for the data */
 }
 
