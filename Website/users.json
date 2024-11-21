@@ -1,0 +1,196 @@
+[
+  {
+    "firstname": "Arthur",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "8ea31e4b-af09-4c85-b732-07ae44d0dda5",
+    "subscription": "Basic",
+    "bankDetails": {
+      "name": "Arthur Cukier",
+      "card": "2222222222222222",
+      "date": "01/01",
+      "code": "100",
+      "userId": "8ea31e4b-af09-4c85-b732-07ae44d0dda5"
+    }
+  },
+  {
+    "firstname": "Arthur",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "eeeeeeeeeeeeeee",
+    "id": "7d3fc7a8-0e8c-4f37-b56f-ad6d7d73655f",
+    "subscription": "Standard"
+  },
+  {
+    "firstname": "Arthur",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "fazegzdefr",
+    "id": "8e2079e9-1631-47ae-bced-5a1797b79c8b",
+    "subscription": "Standard",
+    "bankDetails": {
+      "name": "Arthur Cukier",
+      "card": "2222222222222222",
+      "date": "02/02",
+      "code": "222",
+      "userId": "8e2079e9-1631-47ae-bced-5a1797b79c8b"
+    }
+  },
+  {
+    "firstname": "Robin",
+    "lastname": "derikx",
+    "phone": "0458456452",
+    "email": "robinderingksd@telenet.be",
+    "password": "azertyui",
+    "id": "a19cad9a-e4d9-4446-8b45-2b14f4900dff",
+    "subscription": "Standard",
+    "bankDetails": {
+      "name": "robin derik",
+      "card": "1111111111111111",
+      "date": "02/11",
+      "code": "999",
+      "userId": "a19cad9a-e4d9-4446-8b45-2b14f4900dff"
+    }
+  },
+  {
+    "firstname": "Arthur",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "eeeeeeeeeeeeeee",
+    "id": "c09a49ba-30b9-4785-8f80-d3968281bb1b",
+    "subscription": "Standard",
+    "bankDetails": {
+      "name": "Cukier",
+      "card": "5555555555555555",
+      "date": "02/02",
+      "code": "222",
+      "userId": "c09a49ba-30b9-4785-8f80-d3968281bb1b"
+    }
+  },
+  {
+    "firstname": "LALALA",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "35ccf7b4-2397-4dc2-a4e2-a0d3ad83ce48",
+    "subscription": "Standard",
+    "bankDetails": {
+      "name": "eqrf",
+      "card": "5555555555555555",
+      "date": "01/01",
+      "code": "111",
+      "userId": "35ccf7b4-2397-4dc2-a4e2-a0d3ad83ce48"
+    }
+  },
+  {
+    "firstname": "NDEHFZREV",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "1044b505-028e-46f9-b403-62b68534feed",
+    "subscription": "Premium",
+    "bankDetails": {
+      "name": "Cukier",
+      "card": "5555555555555555",
+      "date": "01/01",
+      "code": "111",
+      "userId": "1044b505-028e-46f9-b403-62b68534feed"
+    }
+  },
+  {
+    "firstname": "jkjhgchf",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "7a28752a-170d-4c68-9837-b27e28afa3d1",
+    "subscription": "Standard",
+    "bankDetails": {
+      "name": "Arthur Cukier",
+      "card": "5555555555555555",
+      "date": "02/02",
+      "code": "213",
+      "userId": "7a28752a-170d-4c68-9837-b27e28afa3d1"
+    }
+  },
+  {
+    "firstname": "fevg",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "0840ffc5-ebda-45b1-ae5d-664ae20f3cac",
+    "subscription": "Basic",
+    "bankDetails": {
+      "name": "Arthur Cukier",
+      "card": "5555555555555555",
+      "date": "01/01",
+      "code": "123",
+      "userId": "0840ffc5-ebda-45b1-ae5d-664ae20f3cac"
+    }
+  },
+  {
+    "firstname": "k,lj",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "29e67ee1-2d7e-4bb0-aa8a-365c992032a0",
+    "subscription": "Standard",
+    "bankDetails": {
+      "name": "Cukier",
+      "card": "2222222222222222",
+      "date": "06/08",
+      "code": "526",
+      "userId": "29e67ee1-2d7e-4bb0-aa8a-365c992032a0"
+    }
+  },
+  {
+    "firstname": "Arthur",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "790a3ffe-7cc0-4c37-9355-a111b12cd34e",
+    "subscription": "Standard"
+  },
+  {
+    "firstname": "Blala",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "6f926884-9102-4e3a-9478-272552054cef",
+    "subscription": "Standard",
+    "bankDetails": {
+      "name": "Arthur Cukier",
+      "card": "1111111111111111",
+      "date": "01/01",
+      "code": "111",
+      "userId": "6f926884-9102-4e3a-9478-272552054cef"
+    }
+  },
+  {
+    "firstname": "Rob",
+    "lastname": "Cukier",
+    "phone": "0492778019",
+    "email": "arthur.cukier05@cukier.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "99667857-665d-417c-9af4-d4b8ab32c099",
+    "subscription": "Premium",
+    "bankDetails": {
+      "name": "Cukier",
+      "card": "1111111111111111",
+      "date": "10/24",
+      "code": "111",
+      "userId": "99667857-665d-417c-9af4-d4b8ab32c099"
+    }
+  }
+]
