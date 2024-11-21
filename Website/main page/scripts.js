@@ -1,7 +1,3 @@
-// This document was partially created with the assistance of AI tools,
-// including code generation from ChatGPT.
-
-
 const translations = {
     en: {
 
