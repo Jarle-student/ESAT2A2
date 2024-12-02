@@ -92,7 +92,7 @@ div.splash{ /* code responsible for the positioning of the entire background */
     border-radius: 4px;
     padding: 0;
     width: 750px;
-    height: 350px;
+    height: 250px;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, .75);
 }
