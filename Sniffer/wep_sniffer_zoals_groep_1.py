@@ -27,9 +27,6 @@ def packet_handler(packet, wep_key):
     else:
         print("No WEP-encryption")
 
-
-    pass
-
 def start_sniffer(interface, wep_key):
     print(f"Sniffing on interface: {interface}")
     try:
