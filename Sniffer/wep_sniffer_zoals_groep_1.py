@@ -18,9 +18,6 @@ def decrypt_packet(wepdata, iv, WEP_key):
     return decrypted_packet
 
 def packet_handler(packet, wep_key):
-    if packet.haslayer(Dot11):
-        print("WEP", packet.FCfield & 0b01000000 != 0)
-    
     if packet.haslayer(Dot11WEP):
         iv = packet[Dot11WEP].iv
         enc_data = packet[Dot11WEP].wepdata
