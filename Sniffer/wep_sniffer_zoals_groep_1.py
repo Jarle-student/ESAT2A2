@@ -43,7 +43,7 @@ def start_sniffer(interface, wep_key):
 
 def main():
     wep_key = "ESAT2"
-    interface = "wlan0"
+    interface = "wlan0mon"
     start_sniffer(interface, wep_key)
 
 if __name__ == "__main__":
