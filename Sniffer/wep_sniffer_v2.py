@@ -1,6 +1,9 @@
 from scapy.all import *
 from RC4_decryption import bin_list_to_decimal_list, hex_to_8_bin_list, extend_key, generate_keystream_8_bin, decrypt
-
+"""
+Vergeet niet
+sudo iwconfig wlan0mon channel 1
+"""
 
 def wep_filter(packet):
     bssid = "B8:27:EB:A7:6C:47"
