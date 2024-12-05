@@ -3,9 +3,9 @@ from RC4_decryption import bin_list_to_decimal_list, hex_to_8_bin_list, extend_k
 
 
 def wep_filter(packet):
-    bssid = "74:DA:38:EB:6F:DC"
+    bssid = "B8:27:EB:A7:6C:47"
     if packet.haslayer(Dot11):
-        return (packet.addr1 == bssid or packet.addr2 == bssid or packet.addr3 == bssid)
+        return (packet.addr1 == bssid.lower() or packet.addr2 == bssid.lower() or packet.addr3 == bssid.lower())
     return False
 
 def decrypt_packet(wepdata, iv, WEP_key):
