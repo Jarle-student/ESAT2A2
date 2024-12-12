@@ -1,3 +1,4 @@
+// retrieve form and input fields using HTML id
 const form = document.getElementById('userForm');
 const firstname = document.getElementById('firstname');
 const email = document.getElementById('email');
@@ -6,14 +7,18 @@ const password2 = document.getElementById('confirm');
 const lastname = document.getElementById('lastname');
 const phone = document.getElementById('phone');
 
-// Replace 'localhost' with a dynamic server address
 const serverBaseUrl = window.location.origin; // Dynamically get the server's base URL
 
-form.addEventListener('submit', e => {
-    e.preventDefault(); // Prevent form submission
+document.getElementById("phone").addEventListener("input", function (event) {
+    // Allow only digits and limit to 10 characters
+    this.value = this.value.replace(/\D/g, '').substring(0, 10);
+});
 
-    if (validateInputs()) {
-        // Collect form data
+
+form.addEventListener('submit', e => {
+    e.preventDefault(); // add event listener and prevent default form submission
+
+    if (validateInputs()) { // if all fields are filled and VALID
         const userData = {
             firstname: firstname.value.trim(),
             lastname: lastname.value.trim(),
@@ -22,11 +27,11 @@ form.addEventListener('submit', e => {
             password: password.value.trim()
         };
 
-        // Send data to the server using fetch
+        // Send a POST request to the server using the server URL
         fetch(`${serverBaseUrl}/register`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json', // specifies that the data is in JSON format
             },
             body: JSON.stringify(userData)
         })
@@ -35,8 +40,7 @@ form.addEventListener('submit', e => {
             // Handle server response
             console.log('Success:', data);
             if (data.message === 'User registered successfully!') {
-                // Store the user ID in sessionStorage
-                sessionStorage.setItem('userId', data.userId);
+                sessionStorage.setItem('userId', data.userId); // Store the user ID in sessionStorage
                 window.location.href = 'keuze.html'; // Redirect to the next page
             }
         })
@@ -50,8 +54,9 @@ form.addEventListener('submit', e => {
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
     errorDisplay.innerText = message;
+
+    // add CSS class for styling
     inputControl.classList.add('error');
     inputControl.classList.remove('success');
 };
@@ -61,13 +66,15 @@ const setSuccess = element => {
     const errorDisplay = inputControl.querySelector('.error');
 
     errorDisplay.innerText = '';
+    // add CSS class for styling
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
 };
 
 const isValidEmail = email => {
+    // pattern for used to match valid email formats
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    return re.test(String(email).toLowerCase()); // converts the email to lowercase and checks if it matches the pattern
 };
 
 const validateInputs = () => {
