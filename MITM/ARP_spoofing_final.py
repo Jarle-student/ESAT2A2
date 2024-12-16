@@ -3,7 +3,7 @@ from scapy.layers.l2 import ARP, Ether
 import time
 import argparse
 
-# AI gebruikt voor optimalisatie en correctie van de code + zelf verbeteringen geïmplementeerd gebruik makend van de ARP-spoofer code van: https://github.com/mirawara/arp-spoofer/blob/main/arp-spoofer.py.
+# AI used for optimalisation and correction of the code + implemented improvements using the ARP-spoofer code of: https://github.com/miraware/arp-spoofer/blob/main/arp-spoofer.py.
 class Spoofing:
 
     def __init__(self):
