@@ -1,15 +1,11 @@
-"""
-Deze code is gekopieërd van grepper. Gegenereerd door 'You (ai)'.
-"""
-
 from flask import Flask, redirect
 
 app = Flask(__name__)
 
-# Deze decorator vertelt Flask dat de functie redirect_link moet worden aangeroepen als iemand in de adressenbalk '/' in geeft.
+# This decorator tells Flask to call the redirect_link function when someone enters '/' in the address bar.
 @app.route('/')
 def redirect_link():
-    # Code 302 betekent 'Found' en wordt gebruikt voor tijdelijke omleidingen.
+    # Code 302 means 'Found' and is used for temporary redirects.
     return redirect('https://www.google.com', code=302)
 
 
